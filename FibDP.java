@@ -8,12 +8,14 @@ public class FibDP{
         if (n <= 1) {
             return n;
         }
+        table[0] = 0;
+        table[1] = 1;
 
-        if (table[n] != 0) {
-            return table[n];
+        // Build up the table in a bottom-up manner
+        for (int i = 2; i <= n; i++) {
+            table[i] = table[i-1] + table[i-2];
         }
 
-        table[n] = fibonacci(n - 1) + fibonacci(n - 2);
         return table[n];
     }
     //Print Time
