@@ -18,29 +18,34 @@ public class FibDP{
     }
     //Print Time
     public static void outputTime(int n){
-        long startTime = System.currentTimeMillis();
-        int fibdp = fibonacci(n);
-        long endTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
+        int fib = fibonacci(n);
+        long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
-        System.out.println("Fib Number " + n + " = " + fibdp + " (" + totalTime + "ms)" );
+        System.out.println("Fib Number " + n + " = " + fib + " (" + totalTime + "ns)" );
     }
 
+    public static void expandTable(int newSize){
+        int[] oldTable = table;
+        int[] newTable = new int[newSize + 1];
+        for(int i = 0; i < oldTable.length; i++){
+            newTable[i] = oldTable[i];
+        }
+        table = newTable;
+    }
     
     public static void main(String[] args){
         int maxSize = 0;
-    
+        table = new int[maxSize];
         for (String s : args) {
             int size = Integer.parseInt(s);
             if (size > maxSize) {
                 maxSize = size;
+                expandTable(size);
             }
-        }
+            outputTime(size);
 
-        table = new int[maxSize + 1];
-    
-        for (String s : args) {
-            outputTime(Integer.parseInt(s));
-        }         
+        }      
     }
     
 }

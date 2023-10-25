@@ -30,11 +30,11 @@ public class FibMemo{
 
     //Print Time
     public static void outputTime(int n){
-        long startTime = System.currentTimeMillis();
-        int fibdp = fibonacci(n);
-        long endTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
+        int fib = fibonacci(n);
+        long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
-        System.out.println("Fib Number " + n + " = " + fibdp + " (" + totalTime + "ms)" );
+        System.out.println("Fib Number " + n + " = " + fib + " (" + totalTime + "ns)" );
     }
 
     public static void main(String[] args){
